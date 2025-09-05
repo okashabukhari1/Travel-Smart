@@ -45,7 +45,7 @@ export default function Home() {
         </video>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/40" />
 
         {/* Hero Content */}
         <motion.div

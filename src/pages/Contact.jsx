@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { PhoneCall } from "lucide-react";
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -40,8 +42,41 @@ export default function Contact() {
     };
 
     return (
-        <div className="max-w-5xl mx-auto px-6 mt-20 mb-20">
-            <h1 className="text-4xl font-bold mb-6 text-center">Contact Us</h1>
+        <div className="max-w-5xl mx-auto px-6 mt-10 mb-20 flex flex-col items-center justify-center">
+            <div className="relative w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 flex flex-col md:flex-row items-center justify-between text-center md:text-left rounded-3xl shadow-2xl overflow-hidden p-8 md:p-12 mb-10">
+                {/* Optional Overlay for Depth */}
+                <div className="absolute inset-0 bg-black/20 rounded-3xl"></div>
+
+                {/* Text Section */}
+                <div className="flex-1 relative z-10">
+                    <motion.h1
+                        initial={{ opacity: 0, y: -30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1 }}
+                        className="text-4xl md:text-4xl font-extrabold text-white drop-shadow-lg"
+                    >
+                        Get in Touch With Us
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.3 }}
+                        className="mt-3 text-lg md:text-xl text-green-100 max-w-xl"
+                    >
+                        Have questions or need help? We’re just one message away
+                    </motion.p>
+                </div>
+
+                {/* Contact Icon */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    className="relative z-10 flex items-center justify-center w-28 h-28 md:w-40 md:h-40 bg-white/20 rounded-full shadow-lg animate-pulse"
+                >
+                    <PhoneCall className="w-16 h-16 md:w-24 md:h-24 text-yellow-300 drop-shadow-[0_0_20px_rgba(255,255,0,0.9)]" />
+                </motion.div>
+            </div>
 
             <div className="grid md:grid-cols-2 gap-10">
                 {/* Contact Information */}
@@ -94,6 +129,7 @@ export default function Contact() {
                                 }}
                                 className={`w-full px-3 py-2 border rounded-lg ${errors.name ? "border-red-500" : "border-gray-300"
                                     } dark:bg-gray-900 dark:border-gray-700`}
+                                placeholder="Enter Your Name"
                             />
                             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                         </div>
@@ -108,6 +144,7 @@ export default function Contact() {
                                 onChange={handleChange}
                                 className={`w-full px-3 py-2 border rounded-lg ${errors.email ? "border-red-500" : "border-gray-300"
                                     } dark:bg-gray-900 dark:border-gray-700`}
+                                    placeholder="Enter Your Email"
                             />
                             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                         </div>
@@ -122,6 +159,7 @@ export default function Contact() {
                                 rows="5"
                                 className={`w-full px-3 py-2 border rounded-lg ${errors.message ? "border-red-500" : "border-gray-300"
                                     } dark:bg-gray-900 dark:border-gray-700`}
+                                    placeholder="Share your message..."
                             ></textarea>
                             {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                         </div>
