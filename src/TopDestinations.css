@@ -1,0 +1,7 @@
+.flipbook {
+    cursor: grab;
+}
+
+.flipbook:active {
+    cursor: grabbing;
+}
